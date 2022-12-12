@@ -1,0 +1,22 @@
+public class Solution {
+
+	public static int diameterOfBinaryTree(BinaryTreeNode<Integer> root){
+		//Your code goes here
+        if(root==null){
+            return 0;
+        }
+        int ld=diameterOfBinaryTree(root.left);
+        int rd=diameterOfBinaryTree(root.right);
+        int subheight=findMaximumheight(root.left)+findMaximumheight(root.right)+1;
+        return Math.max(subheight,Math.max(ld,rd));
+	}
+    private static int findMaximumheight(BinaryTreeNode<Integer>root){
+        if(root==null){
+            return 0;
+        }
+     int left=1+   findMaximumheight(root.left);
+     int right=1+   findMaximumheight(root.right);
+        return Math.max(left,right);
+    }		
+	}
+	
